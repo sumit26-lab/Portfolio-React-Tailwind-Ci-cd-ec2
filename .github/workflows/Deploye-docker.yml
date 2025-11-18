@@ -23,8 +23,8 @@ jobs:
           script: |
             cd /home/ubuntu/
             echo "inside your ec2"
-            if [ -d "Portfolio-React-Tailwind" ]; then
-               cd Portfolio-React-Tailwind
+            if [ -d "Portfolio-React-Tailwind-Ci-cd-ec2" ]; then
+               cd Portfolio-React-Tailwind-Ci-cd-ec2
                git pull
                echo "Reposity Allready clone inside Portfolio-React-Tailwind "
             else
@@ -34,16 +34,16 @@ jobs:
             fi  
               
             echo "Building docker image..."
-            docker build -t react-protfolio .
+            sudo docker build -t react-protfolio .
 
             echo "Stopping old container..."
-            docker stop react-protfolio || true
+            sudo docker stop react-protfolio || true
 
             echo "Removing old container..."
-            docker rm react-protfolio || true
+            sudo docker rm react-protfolio || true
 
             echo "Running new container..."
-            docker run -d -p 80:80 --name react-protfolio react-protfolio
+            sudo docker run -d -p 80:80 --name react-protfolio react-protfolio
 
             echo "Docker container successfully running!"
             
