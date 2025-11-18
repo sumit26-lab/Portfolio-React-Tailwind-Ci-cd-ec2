@@ -30,6 +30,7 @@ jobs:
             else
               echo "Reposity not found now clone there"
               git clone https://github.com/sumit26-lab/Portfolio-React-Tailwind-Ci-cd-ec2.git
+            fi  
 
               echo "Building docker image..."
               docker build -t react-protfolio .
