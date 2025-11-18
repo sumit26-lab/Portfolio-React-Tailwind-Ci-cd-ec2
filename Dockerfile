@@ -1,0 +1,56 @@
+#Build stage
+
+FROM  node:20-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run  build 
+
+# Production Stage
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD [ "nginx", "-g","daemon off;" ]
+
+
+# name: Deploye-cicd
+# on:
+#  push:
+#   branches:
+#    - main
+#    - master
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#      - name: checkout-Code
+#      - uses: actions/checkout@4.31
+#      - name: setUp-Docker
+#      - uses: docker/setup-buildx-action@v2
+#      - name: Login to EC2 (via SSH)
+#      - uses: appleboy/ssh-action@v1
+#        with:
+#           host: ${{ secrets.EC2_HOST }}
+#           username: ubuntu
+#           key: ${{ secrets.EC2_KEY }}
+#           script: |
+#             cd /home/ubuntu/
+#             echo "inside your ec2"
+#             if [-d "Portfolio-React-Tailwind"]; then
+#                echo "Reposity Allready clone inside Portfolio-React-Tailwind "
+#             else
+#               echo "Reposity not found now clone there"
+#               git clone https://github.com/sumit26-lab/Portfolio-React-Tailwind-Ci-cd-ec2.git
+#               docker build -t react-protfolio
+#               docker stop react-protfolio || true
+#               docker rm react-protfolio || true
+#               docker run -d -p 80:80 --name react-protfolio
+#               echo "docker container succesfuliy run"
+              
+            
+          
+            
+          
+     
+   
