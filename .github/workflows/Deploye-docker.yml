@@ -23,7 +23,7 @@ jobs:
           script: |
             cd /home/ubuntu/
             echo "inside your ec2"
-            if [ -d "Portfolio-React-Tailwind"]; then
+            if [ -d "Portfolio-React-Tailwind" ]; then
                cd Portfolio-React-Tailwind
                git pull
                echo "Reposity Allready clone inside Portfolio-React-Tailwind "
@@ -43,7 +43,7 @@ jobs:
                echo "Running new container..."
                docker run -d -p 80:80 --name react-protfolio react-protfolio
 
-             echo "Docker container successfully running!"
+               echo "Docker container successfully running!"
             
           
             
