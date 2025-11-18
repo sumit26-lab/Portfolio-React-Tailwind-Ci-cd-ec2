@@ -11,7 +11,7 @@ jobs:
    steps:
 
      - name: checkout-Code
-       uses: actions/checkout@4.31
+       uses: actions/checkout@v5
      - name: setUp-Docker
        uses: docker/setup-buildx-action@v2
      - name: Login to EC2 (via SSH)
