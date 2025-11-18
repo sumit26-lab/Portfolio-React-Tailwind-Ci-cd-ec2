@@ -24,14 +24,16 @@ jobs:
             cd /home/ubuntu/
             echo "inside your ec2"
             if [ -d "Portfolio-React-Tailwind" ]; then
-               cd Portfolio-React-Tailwind
                git pull
+               cd Portfolio-React-Tailwind
                echo "Reposity Allready clone inside Portfolio-React-Tailwind "
             else
               echo "Reposity not found now clone there"
               git clone https://github.com/sumit26-lab/Portfolio-React-Tailwind-Ci-cd-ec2.git
-            fi  
+              cd Portfolio-React-Tailwind-Ci-cd-ec2
 
+            fi  
+              
               echo "Building docker image..."
               docker build -t react-protfolio .
 
