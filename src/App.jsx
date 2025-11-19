@@ -11,7 +11,7 @@ import Service from './components/Service'
 function App() {
 
   return (
-    <div>
+    <div
         <Navbar />
         <Hero />
         <About />
