@@ -1,7 +1,6 @@
 version: "3.3"
 services:
  web:
-  build:
-   context: .
+  image: "sumitsinghchouhan/vite-jenkins-portfolio:latest"
   ports:
    - "80:80"
