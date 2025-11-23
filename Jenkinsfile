@@ -62,7 +62,7 @@ pipeline{
               echo "start to deployement"
         //     //  sh "docker run -d -p 80:80 portfolio-reactapp:latest"
                 echo "Checking Docker Compose..."
-                docker compose version || docker-compose --version || true
+              sh  "docker compose version || docker-compose --version || true"
                   sh "sudo apt-get install docker-compose-v2"
               
              sh "docker compose down && docker compose up -d"
